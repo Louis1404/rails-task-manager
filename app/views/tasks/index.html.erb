@@ -1,0 +1,28 @@
+<div>
+  <h2>My tasks</h2>
+  <div class="maincard">
+    <% @tasks.each do |task| %>
+      <ul class= "list-inline">
+        <li>
+          <% if task[:completed] == false %>
+              <%= link_to "", task_path(task), class: "glyphicon glyphicon-unchecked",
+              method: :patch %>
+          <% else %>
+            <%= link_to "", task_path(task), class: "glyphicon glyphicon-check",
+            method: :patch %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "", task_path(task), class: "glyphicon glyphicon-trash",
+          method: :delete,
+          data: { confirm: "Are you sure?" } %>
+        </li>
+        <li>
+          <%= link_to task.title, task_path(task) %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+  <%= link_to "", new_task_path, class: "glyphicon glyphicon-plus" %>
+</div>
+
